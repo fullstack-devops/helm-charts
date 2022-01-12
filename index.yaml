@@ -1,5 +1,32 @@
 apiVersion: v1
 entries:
+  chartmuseum:
+  - apiVersion: v1
+    appVersion: 0.13.0
+    created: "2022-01-12T06:52:28.955597996Z"
+    description: Host your own Helm Chart Repository
+    digest: 0ea0f0ad8f6c7f1c688b10d2fc4e937a91152b33139647e831fd70e7e1e29003
+    home: https://github.com/helm/chartmuseum
+    icon: https://raw.githubusercontent.com/chartmuseum/charts/main/logo.jpg
+    keywords:
+    - chartmuseum
+    - helm
+    - charts repo
+    name: chartmuseum
+    urls:
+    - https://github.com/eksrvb/helm-charts/releases/download/chartmuseum-2.16.2/chartmuseum-2.16.2.tgz
+    version: 2.16.2
+  excalidraw:
+  - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2022-01-12T06:52:29.105235525Z"
+    description: A Helm chart for Kubernetes
+    digest: d2ffa66ea6452de313fcda2186a953f3e1d9633f26d4a3eca299fac5bcde372e
+    name: excalidraw
+    type: application
+    urls:
+    - https://github.com/eksrvb/helm-charts/releases/download/excalidraw-1.0.1/excalidraw-1.0.1.tgz
+    version: 1.0.1
   kube-arangodb:
   - apiVersion: v1
     appVersion: 3.5.0
@@ -101,4 +128,4 @@ entries:
     urls:
     - https://github.com/arangodb/kube-arangodb/releases/download/1.2.1/kube-arangodb-crd-1.2.1.tgz
     version: 1.2.1
-generated: "2021-12-15T13:25:40.946486509+01:00"
+generated: "2022-01-12T06:52:29.105285926Z"
