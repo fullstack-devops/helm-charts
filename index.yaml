@@ -16,6 +16,17 @@ entries:
     urls:
     - https://github.com/eksrvb/helm-charts/releases/download/chartmuseum-2.16.2/chartmuseum-2.16.2.tgz
     version: 2.16.2
+  dns-bind:
+  - apiVersion: v2
+    appVersion: 0.0.7
+    created: "2022-01-24T11:50:23.917457153Z"
+    description: A bind9 Helm chart for Kubernetes
+    digest: 4b2a357f0e1e8f1c7e988d0962db929498152f919aefceb819c2a792bd56d85e
+    name: dns-bind
+    type: application
+    urls:
+    - dns-bind-0.0.7.tgz
+    version: 0.0.7
   excalidraw:
   - apiVersion: v2
     appVersion: 0.10.0
@@ -27,4 +38,4 @@ entries:
     urls:
     - https://github.com/eksrvb/helm-charts/releases/download/excalidraw-1.0.1/excalidraw-1.0.1.tgz
     version: 1.0.1
-generated: "2022-01-12T06:52:29.105285926Z"
+generated: "2022-01-24T11:50:23.907831081Z"
