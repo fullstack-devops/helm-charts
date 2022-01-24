@@ -19,13 +19,13 @@ entries:
   dns-bind:
   - apiVersion: v2
     appVersion: 0.0.7
-    created: "2022-01-24T11:50:23.917457153Z"
+    created: "2022-01-24T12:06:34.590500695Z"
     description: A bind9 Helm chart for Kubernetes
     digest: 4b2a357f0e1e8f1c7e988d0962db929498152f919aefceb819c2a792bd56d85e
     name: dns-bind
     type: application
     urls:
-    - dns-bind-0.0.7.tgz
+    - https://github.com/fullstack-devops/dns-bind/releases/download/0.0.11/dns-bind-0.0.11.tgz/dns-bind-0.0.7.tgz
     version: 0.0.7
   excalidraw:
   - apiVersion: v2
@@ -38,4 +38,4 @@ entries:
     urls:
     - https://github.com/eksrvb/helm-charts/releases/download/excalidraw-1.0.1/excalidraw-1.0.1.tgz
     version: 1.0.1
-generated: "2022-01-24T11:50:23.907831081Z"
+generated: "2022-01-24T12:06:34.589564574Z"
