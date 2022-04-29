@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+  labels:
+    {{- include "github-actions-runner.labels" . | nindent 4 }}
+data:
+  KANIKO_ENABLED: {{ .Values.runner.kaniko.enabled | squote }}
+  GH_ORG: {{ .Values.runner.github.organisation | squote }}
+  {{- if .Values.runner.github.repository }}
+  GH_REPO: {{ .Values.runner.github.repository | squote }}
+  {{- end }}
+  {{- if .Values.runner.labels }}
+  GH_RUNNER_LABELS: {{ .Values.runner.labels | squote }}
+  {{- end }}
+

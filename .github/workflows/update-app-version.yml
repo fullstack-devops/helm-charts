@@ -1,0 +1,37 @@
+name:
+
+on:
+  workflow_dispatch:
+    inputs:
+      chart:
+        description: "name fo chart"
+        required: true
+      version:
+        description: "new appVersion"
+        required: true
+  repository_dispatch:
+    types: [update_chart_version]
+
+jobs:
+  check_vars:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Get Instance(s)
+        id: variables
+        envs:
+          DIR: charts/${{ github.event.inputs.chart }}
+        run: |
+          if [ ! -d "$DIR" ]; then
+            echo "Chart ${{ github.event.inputs.chart }} does not exist. Canceling update..."
+            exit 1
+          else
+            echo "Chart ${{ github.event.inputs.chart }} found. Update appVersion to ${{ github.event.inputs.version }}"
+          fi
+
+  update_appVersion:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Get Instance(s)
+        run: |
+          echo "Hallo Welt"
+

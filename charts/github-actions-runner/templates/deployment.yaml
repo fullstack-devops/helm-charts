@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "github-actions-runner.fullname" . }}
+  labels:
+    {{- include "github-actions-runner.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "github-actions-runner.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "github-actions-runner.selectorLabels" . | nindent 8 }}
+    spec:
+      volumes:
+        {{- if .Values.runner.kaniko.mountedSecret }}
+        - name: pull-secret
+          secret:
+            secretName: "{{ .Values.runner.kaniko.mountedSecret }}"
+            items:
+              - key: .dockerconfigjson
+                path: config.json
+            defaultMode: 420
+        {{- end }}
+        {{- if .Values.runner.kaniko.enabled }}
+        - name: workspace-volume
+          emptyDir: {}
+        {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "github-actions-runner.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        {{- if .Values.runner.kaniko.enabled }}
+        - name: {{ .Chart.Name }}-kaniko
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-kaniko-sidecar"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: workspace-volume
+              mountPath: /kaniko/workspace/
+          imagePullPolicy: IfNotPresent
+        {{- end }}
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-{{ .Values.runner.flavour }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            {{- if .Values.runner.kaniko.enabled }}
+            - name: workspace-volume
+              mountPath: /kaniko/workspace/
+            {{- end }}
+            {{- if .Values.runner.kaniko.mountedSecret }}
+            - name: pull-secret
+              readOnly: true
+              mountPath: /kaniko/.docker
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-secret
+            - configMapRef:
+                name: {{ .Release.Name }}-configmap
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
