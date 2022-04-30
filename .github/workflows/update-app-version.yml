@@ -1,0 +1,51 @@
+name:
+
+on:
+  workflow_dispatch:
+    inputs:
+      chart:
+        description: "name fo chart"
+        required: true
+      version:
+        description: "new appVersion"
+        required: true
+  repository_dispatch:
+    types: [update_chart_version]
+
+jobs:
+  check_vars:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Get Instance(s)
+        id: variables
+        envs:
+          DIR: charts/${{ github.event.inputs.chart }}
+          valid: '0-9a-zA-Z\-\_'
+        run: |
+          if [ ! -d "$DIR" ]; then
+            echo "Chart ${{ github.event.inputs.chart }} does not exist. Canceling update..."
+            exit 1
+          else
+            if [[ ! "${{ github.event.inputs.version }}" =~ [^$valid] ]]; then
+              echo "appVersion does not match regex ${{ github.event.inputs.version }}, canceling update..."
+              exit 1
+            else
+              echo "Chart ${{ github.event.inputs.chart }} found. Update appVersion to ${{ github.event.inputs.version }}"
+            fi
+          fi
+
+  update_appVersion:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set appVersion and push
+        run: |
+          sed -i "s/appVersion: .*/appVersion: ${{ github.event.inputs.version }}/g" charts/${{ github.event.inputs.chart }}/Chart.yaml
+
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          
+          git status
+          git commit -a -m "update chart ${{ github.event.inputs.chart }} to appVersion ${{ github.event.inputs.version }}"
+          git push
