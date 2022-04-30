@@ -1,4 +1,4 @@
-name:
+name: Update chart appVersion
 
 on:
   workflow_dispatch:
