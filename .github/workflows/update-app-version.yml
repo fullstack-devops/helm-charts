@@ -16,14 +16,15 @@ jobs:
   check_vars:
     runs-on: [ubuntu-latest]
     steps:
-      - name: Get Instance(s)
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: check chart
         id: variables
         shell: bash
         env:
-          DIR: charts/${{ github.event.inputs.chart }}
           valid: '0-9a-zA-Z\-\_'
         run: |
-          if [ ! -d "charts/$DIR" ]; then
+          if [ ! -d "charts/${{ github.event.inputs.chart }}" ]; then
             echo "Chart ${{ github.event.inputs.chart }} does not exist. Canceling update..."
             exit 1
           else
@@ -32,6 +33,7 @@ jobs:
               exit 1
             else
               echo "Chart ${{ github.event.inputs.chart }} found. Update appVersion to ${{ github.event.inputs.version }}"
+              exit 0
             fi
           fi
 
