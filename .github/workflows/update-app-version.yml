@@ -45,8 +45,29 @@ jobs:
         uses: actions/checkout@v2
       - name: Set appVersion and push
         shell: bash
+        env:
+          CHART_YAML: charts/${{ github.event.inputs.chart }}/Chart.yaml
         run: |
-          sed -i "s/appVersion: .*/appVersion: ${{ github.event.inputs.version }}/g" charts/${{ github.event.inputs.chart }}/Chart.yaml
+          sed -i "s/appVersion: .*/appVersion: ${{ github.event.inputs.version }}/g" $CHART_YAML
+
+          # Get version
+          export chart_version=$(grep 'version:' $CHART_YAML | awk '{ print $2}')
+
+          ### Increments the part of the string
+          ## $1: version itself
+          ## $2: number of part: 0 – major, 1 – minor, 2 – patch
+          increment_version() {
+            local delimiter=.
+            local array=($(echo "$1" | tr $delimiter '\n'))
+            array[$2]=$((array[$2]+1))
+            echo $(local IFS=$delimiter ; echo "${array[*]}")
+          }
+
+          export new_version=$(increment_version 2 $chart_version)
+
+          sed -i "s/version: .*/version: $new_version/g" $CHART_YAML
+
+          cat $CHART_YAML
 
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
