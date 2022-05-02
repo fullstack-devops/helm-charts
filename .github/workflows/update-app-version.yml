@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Get Instance(s)
         id: variables
+        shell: bash
         env:
           DIR: charts/${{ github.event.inputs.chart }}
           valid: '0-9a-zA-Z\-\_'
@@ -40,6 +41,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set appVersion and push
+        shell: bash
         run: |
           sed -i "s/appVersion: .*/appVersion: ${{ github.event.inputs.version }}/g" charts/${{ github.event.inputs.chart }}/Chart.yaml
 
