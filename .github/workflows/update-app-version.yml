@@ -39,6 +39,7 @@ jobs:
 
   update_appVersion:
     runs-on: [ubuntu-latest]
+    needs: [check_vars]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
