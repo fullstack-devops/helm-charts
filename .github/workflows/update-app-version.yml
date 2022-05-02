@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Get Instance(s)
         id: variables
-        envs:
+        env:
           DIR: charts/${{ github.event.inputs.chart }}
           valid: '0-9a-zA-Z\-\_'
         run: |
