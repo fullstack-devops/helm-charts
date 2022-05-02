@@ -60,3 +60,25 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the image deployment string of runner
+*/}}
+{{- define "github-actions-runner.runner-image" -}}
+{{- if not .Values.runner.flavor.override }}
+{{- printf "%s:%s-%s" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) .Values.runner.flavor.name }}
+{{- else }}
+{{- printf "%s:%s" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- end }}
+{{- end }}
+
+{{/*
+Create the image deployment string of runner with kaniko
+*/}}
+{{- define "github-actions-runner.runner-image-kaniko" -}}
+{{- if not .Values.runner.kaniko.image.repository }}
+{{- printf "%s:%s-kaniko-sidecar" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- else }}
+{{- printf "%s:%s" .Values.runner.kaniko.image.repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- end }}
+{{- end }}

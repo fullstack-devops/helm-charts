@@ -6,6 +6,12 @@ metadata:
     {{- include "github-actions-runner.labels" . | nindent 4 }}
 data:
   KANIKO_ENABLED: {{ .Values.runner.kaniko.enabled | squote }}
+  {{- if .Values.runner.github.enterpriseUrl }}
+  GH_URL: {{ .Values.runner.github.enterpriseUrl | squote }}
+  {{- end }}
+  {{- if .Values.runner.github.enterpriseApiUrl }}
+  GH_API_ENDPOINT: {{ .Values.runner.github.enterpriseApiUrl | squote }}
+  {{- end }}
   GH_ORG: {{ .Values.runner.github.organisation | squote }}
   {{- if .Values.runner.github.repository }}
   GH_REPO: {{ .Values.runner.github.repository | squote }}

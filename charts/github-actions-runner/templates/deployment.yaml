@@ -44,7 +44,7 @@ spec:
       containers:
         {{- if .Values.runner.kaniko.enabled }}
         - name: {{ .Chart.Name }}-kaniko
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-kaniko-sidecar"
+          image: {{ include "github-actions-runner.runner-image-kaniko" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
@@ -55,7 +55,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}-{{ .Values.runner.flavour }}"
+          image: {{ include "github-actions-runner.runner-image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             {{- if .Values.runner.kaniko.enabled }}
