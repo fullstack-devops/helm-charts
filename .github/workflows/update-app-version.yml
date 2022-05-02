@@ -63,7 +63,7 @@ jobs:
             echo $(local IFS=$delimiter ; echo "${array[*]}")
           }
 
-          export new_version=$(increment_version 2 $chart_version)
+          export new_version=$(increment_version $chart_version 2)
 
           sed -i "s/version: .*/version: $new_version/g" $CHART_YAML
 
