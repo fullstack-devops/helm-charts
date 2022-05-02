@@ -59,7 +59,7 @@ jobs:
       - name: Set appVersion and push
         shell: bash
         env:
-          CHART_YAML: charts/${{ needs.check_vars.outputs.appVersion }}/Chart.yaml
+          CHART_YAML: charts/${{ needs.check_vars.outputs.chart }}/Chart.yaml
         run: |
           sed -i "s/appVersion: .*/appVersion: ${{ needs.check_vars.outputs.appVersion }}/g" $CHART_YAML
 
