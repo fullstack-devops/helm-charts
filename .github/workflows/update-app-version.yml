@@ -22,7 +22,7 @@ jobs:
           DIR: charts/${{ github.event.inputs.chart }}
           valid: '0-9a-zA-Z\-\_'
         run: |
-          if [ ! -d "$DIR" ]; then
+          if [ ! -d "charts/$DIR" ]; then
             echo "Chart ${{ github.event.inputs.chart }} does not exist. Canceling update..."
             exit 1
           else
