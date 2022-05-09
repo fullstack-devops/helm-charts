@@ -20,7 +20,7 @@ runner:
     enabled: true
     image:
       repository: ""
-    mountedSecret: {}
+    mountedSecret: ""
   github:
     # if enterpriseUrl and enterpriseApiUrl github.com will be used
     enterpriseUrl: ""
