@@ -20,6 +20,10 @@ spec:
       labels:
         {{- include "github-actions-runner.selectorLabels" . | nindent 8 }}
     spec:
+      {{- if .Values.securityContext }}
+      securityContext:
+        {{ toYaml .Values.securityContext | nindent 8 }}
+      {{- end }}
       volumes:
         {{- if .Values.runner.kaniko.mountedSecret }}
         - name: pull-secret
@@ -51,12 +55,20 @@ spec:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
           imagePullPolicy: IfNotPresent
+          {{- if .Values.podSecurityContext }}
+          securityContext:
+            {{ toYaml .Values.podSecurityContext | nindent 12 }}
+          {{- end }}
         {{- end }}
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: {{ include "github-actions-runner.runner-image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.podSecurityContext }}
+          securityContext:
+            {{ toYaml .Values.podSecurityContext | nindent 12 }}
+          {{- end }}
           volumeMounts:
             {{- if .Values.runner.kaniko.enabled }}
             - name: workspace-volume
