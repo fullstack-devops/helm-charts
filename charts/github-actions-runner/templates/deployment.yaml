@@ -52,6 +52,11 @@ spec:
           volumeMounts:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
+            {{- if .Values.runner.kaniko.mountedSecret }}
+            - name: pull-secret
+              readOnly: true
+              mountPath: /kaniko/.docker
+            {{- end }}
           imagePullPolicy: IfNotPresent
         {{- end }}
         - name: {{ .Chart.Name }}
@@ -64,13 +69,13 @@ spec:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
             {{- end }}
-            {{- if .Values.runner.kaniko.mountedSecret }}
-            - name: pull-secret
-              readOnly: true
-              mountPath: /kaniko/.docker
-            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          {{- range $key, $val := .Values.runner.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+          {{- end }}
           envFrom:
             - secretRef:
                 name: {{ .Release.Name }}-secret

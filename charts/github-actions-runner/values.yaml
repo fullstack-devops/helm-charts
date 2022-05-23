@@ -16,6 +16,8 @@ runner:
     # if override: true -> the runner.flavor will be ignored and image.repository and image.tag will be leading
     override: false
   labels: ""
+  # inject the runner custom env variables
+  env: []
   kaniko:
     enabled: true
     image:
