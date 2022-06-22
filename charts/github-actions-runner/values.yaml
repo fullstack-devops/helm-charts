@@ -47,18 +47,19 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext:
+  {}
+  # runAsNonRoot: false
+  # runAsUser: 1000
+  # fsGroup: 1000
+
+# does not apply on kaniko
+securityContext:
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
   runAsUser: 1000
-  fsGroup: 1000
-
-securityContext:
-  {}
   # capabilities:
   #   drop:
   #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 resources:
   {}

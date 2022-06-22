@@ -45,7 +45,8 @@ spec:
         {{- if .Values.runner.kaniko.enabled }}
         - name: {{ .Chart.Name }}-kaniko
           securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
+            runAsUser: 0
+            readOnlyRootFilesystem: false
           image: {{ include "github-actions-runner.runner-image-kaniko" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
