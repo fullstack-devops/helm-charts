@@ -63,6 +63,36 @@ entries:
     version: 0.0.7
   github-actions-runner:
   - apiVersion: v2
+    appVersion: 0.5.1
+    created: "2022-07-08T08:26:42.980455133Z"
+    description: A Helm chart for Kubernetes
+    digest: fe554a838fd3d47d870793e0fc0e43cd5f502e056fc833f269a867d2a900ef1e
+    name: github-actions-runner
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.2.14/github-actions-runner-0.2.14.tgz
+    version: 0.2.14
+  - apiVersion: v2
+    appVersion: 0.5.0
+    created: "2022-07-08T07:53:18.145010503Z"
+    description: A Helm chart for Kubernetes
+    digest: ffa132064ae095fcc4089cda5aae3605265ae9c88ad30fb83fc7eb21949a5cb6
+    name: github-actions-runner
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.2.13/github-actions-runner-0.2.13.tgz
+    version: 0.2.13
+  - apiVersion: v2
+    appVersion: 0.4.13
+    created: "2022-06-22T10:11:27.650958369Z"
+    description: A Helm chart for Kubernetes
+    digest: 263b86abe7fb7471b596a4ed7c6dca05757a11485c5914de19178a899534b5af
+    name: github-actions-runner
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.2.12/github-actions-runner-0.2.12.tgz
+    version: 0.2.12
+  - apiVersion: v2
     appVersion: 0.4.13
     created: "2022-05-24T07:16:08.534480493Z"
     description: A Helm chart for Kubernetes
@@ -192,4 +222,4 @@ entries:
     urls:
     - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.1.0/github-actions-runner-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-24T07:16:08.534583497Z"
+generated: "2022-07-08T08:26:42.980693333Z"
