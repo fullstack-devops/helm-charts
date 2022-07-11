@@ -61,37 +61,6 @@ entries:
     urls:
     - https://github.com/fullstack-devops/dns-bind/releases/download/0.0.11/dns-bind-0.0.11.tgz/dns-bind-0.0.7.tgz
     version: 0.0.7
-  excalidraw:
-  - apiVersion: v2
-    appVersion: sha-4bfc5bb
-    created: "2022-05-02T09:25:46.331318958Z"
-    description: A Helm chart for Kubernetes
-    digest: db27909a84ec90a5a371b8a28714daa02c731bb6c7c3cd2464ef97892586158c
-    name: excalidraw
-    type: application
-    urls:
-    - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-1.0.3/excalidraw-1.0.3.tgz
-    version: 1.0.3
-  - apiVersion: v2
-    appVersion: sha-cc201a6
-    created: "2022-05-02T06:50:40.955518817Z"
-    description: A Helm chart for Kubernetes
-    digest: 780233bef2fd0e55d7c80c7b41de6b44b8cbb668a77bc6f604e4a605f1cb2900
-    name: excalidraw
-    type: application
-    urls:
-    - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-1.0.2/excalidraw-1.0.2.tgz
-    version: 1.0.2
-  - apiVersion: v2
-    appVersion: 0.10.0
-    created: "2022-04-30T11:41:22.100507073Z"
-    description: A Helm chart for Kubernetes
-    digest: d9c62e7fb588fd04e15a25b5243dae4982f6b48f88aabe5e0ac3ed4b680047db
-    name: excalidraw
-    type: application
-    urls:
-    - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-1.0.1/excalidraw-1.0.1.tgz
-    version: 1.0.1
   github-actions-runner:
   - apiVersion: v2
     appVersion: 0.4.13
