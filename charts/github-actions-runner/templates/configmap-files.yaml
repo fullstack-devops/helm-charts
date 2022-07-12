@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap-files
+  labels:
+    {{- include "github-actions-runner.labels" . | nindent 4 }}
+data:
+  {{- if .Values.runner.additionalFiles.maven.settingsXml }}
+  settings.xml: |- {{ .Values.runner.additionalFiles.maven.settingsXml | nindent 4 }}
+  {{- end }}

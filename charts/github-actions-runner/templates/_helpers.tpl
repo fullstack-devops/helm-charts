@@ -62,6 +62,17 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
+Create the image deployment string of init-runner
+*/}}
+{{- define "github-actions-runner.init" -}}
+{{- if not .Values.runner.flavor.override }}
+{{- printf "%s:%s-%s" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) "init" }}
+{{- else }}
+{{- printf "%s:%s" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the image deployment string of runner
 */}}
 {{- define "github-actions-runner.runner-image" -}}

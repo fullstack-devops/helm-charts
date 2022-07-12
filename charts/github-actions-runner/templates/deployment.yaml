@@ -34,6 +34,9 @@ spec:
         - name: workspace-volume
           emptyDir: {}
         {{- end }}
+        - name: ca-certificates.crt
+          configMap: 
+            name: "{{ .Values.runner.customCerts.caCertificatesCrt }}"
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -53,6 +56,10 @@ spec:
           volumeMounts:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
+            {{- if .Values.runner.customCerts.caCertificatesCrt }}
+            - name: ca-certificates.crt
+              mountPath: /kaniko/ssl/certs/ca-certificates.crt
+            {{- end }}
             {{- if .Values.runner.kaniko.mountedSecret }}
             - name: pull-secret
               readOnly: true
@@ -66,6 +73,10 @@ spec:
           image: {{ include "github-actions-runner.runner-image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
+            {{- if .Values.runner.customCerts.caCertificatesCrt }}
+            - name: ca-certificates.crt
+              mountPath: /etc/ssl/certs/ca-certificates.crt
+            {{- end }}
             {{- if .Values.runner.kaniko.enabled }}
             - name: workspace-volume
               mountPath: /kaniko/workspace/
@@ -81,7 +92,7 @@ spec:
             - secretRef:
                 name: {{ .Release.Name }}-secret
             - configMapRef:
-                name: {{ .Release.Name }}-configmap
+                name: {{ .Release.Name }}-configmap-env
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
