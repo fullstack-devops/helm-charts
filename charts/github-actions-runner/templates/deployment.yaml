@@ -34,9 +34,19 @@ spec:
         - name: workspace-volume
           emptyDir: {}
         {{- end }}
-        - name: ca-certificates.crt
+        {{- if .Values.runner.customCerts.caCertificatesCrt }}
+        - name: ca-certificates-crt
           configMap: 
             name: "{{ .Values.runner.customCerts.caCertificatesCrt }}"
+        {{- end }}
+        - name: config-files
+          configMap:
+            name: {{ .Release.Name }}-configmap-files
+            items:
+            {{- if .Values.runner.additionalFiles.maven.settingsXml }}
+            - key: "settings.xml"
+              path: "settings.xml"
+            {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -57,7 +67,7 @@ spec:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
             {{- if .Values.runner.customCerts.caCertificatesCrt }}
-            - name: ca-certificates.crt
+            - name: ca-certificates-crt
               mountPath: /kaniko/ssl/certs/ca-certificates.crt
             {{- end }}
             {{- if .Values.runner.kaniko.mountedSecret }}
@@ -74,13 +84,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             {{- if .Values.runner.customCerts.caCertificatesCrt }}
-            - name: ca-certificates.crt
+            - name: ca-certificates-crt
               mountPath: /etc/ssl/certs/ca-certificates.crt
             {{- end }}
             {{- if .Values.runner.kaniko.enabled }}
             - name: workspace-volume
               mountPath: /kaniko/workspace/
             {{- end }}
+            - name: config-files
+              mountPath: "/mnt/dynamic"
+              readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
