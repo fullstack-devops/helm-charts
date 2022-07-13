@@ -34,10 +34,10 @@ spec:
         - name: workspace-volume
           emptyDir: {}
         {{- end }}
-        {{- if .Values.runner.customCerts.caCertificatesCrt }}
+        {{- if .Values.runner.customCerts.configMapRef }}
         - name: ca-certificates-crt
           configMap: 
-            name: "{{ .Values.runner.customCerts.caCertificatesCrt }}"
+            name: "{{ .Values.runner.customCerts.configMapRef }}"
         {{- end }}
         - name: config-files
           configMap:
@@ -61,7 +61,7 @@ spec:
           volumeMounts:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
-            {{- if .Values.runner.customCerts.caCertificatesCrt }}
+            {{- if .Values.runner.customCerts.configMapRef }}
             - name: ca-certificates-crt
               mountPath: /kaniko/ssl/certs/
             {{- end }}
@@ -78,7 +78,7 @@ spec:
           image: {{ include "github-actions-runner.runner-image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-            {{- if .Values.runner.customCerts.caCertificatesCrt }}
+            {{- if .Values.runner.customCerts.configMapRef }}
             - name: ca-certificates-crt
               mountPath: /etc/ssl/certs/
             {{- end }}
