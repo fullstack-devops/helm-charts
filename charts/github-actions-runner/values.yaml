@@ -22,7 +22,7 @@ runner:
     # - name: TEST_ENV
     #   value: "some value"
   kaniko:
-    enabled: true
+    enabled: false
     image:
       repository: ""
     mountedSecret: ""
@@ -41,27 +41,28 @@ runner:
     maven:
       # example settings.xml, will be placed in global .m2 folder
       settingsXml:
-        <settings xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
-            <mirrors>
-                <mirror>
-                    <id>custom-nexus</id>
-                    <mirrorOf>*</mirrorOf>
-                    <url>https://example.intra.com/repository/maven-public/</url>
-                </mirror>
-            </mirrors>
-            <servers>
-                <server>
-                    <id>custom-maven-releases</id>
-                    <username>${maven.username}</username>
-                    <password>${maven.password}</password>
-                </server>
-                <server>
-                    <id>custom-maven-snapshots</id>
-                    <username>${maven.username}</username>
-                    <password>${maven.password}</password>
-                </server>
-            </servers>
-        </settings>
+        ""
+        # <settings xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+        #     <mirrors>
+        #         <mirror>
+        #             <id>custom-nexus</id>
+        #             <mirrorOf>*</mirrorOf>
+        #             <url>https://example.intra.com/repository/maven-public/</url>
+        #         </mirror>
+        #     </mirrors>
+        #     <servers>
+        #         <server>
+        #             <id>custom-maven-releases</id>
+        #             <username>${maven.username}</username>
+        #             <password>${maven.password}</password>
+        #         </server>
+        #         <server>
+        #             <id>custom-maven-snapshots</id>
+        #             <username>${maven.username}</username>
+        #             <password>${maven.password}</password>
+        #         </server>
+        #     </servers>
+        # </settings>
 
 imagePullSecrets: []
 nameOverride: ""

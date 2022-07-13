@@ -42,11 +42,6 @@ spec:
         - name: config-files
           configMap:
             name: {{ .Release.Name }}-configmap-files
-            items:
-            {{- if .Values.runner.additionalFiles.maven.settingsXml }}
-            - key: "settings.xml"
-              path: "settings.xml"
-            {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -68,7 +63,7 @@ spec:
               mountPath: /kaniko/workspace/
             {{- if .Values.runner.customCerts.caCertificatesCrt }}
             - name: ca-certificates-crt
-              mountPath: /kaniko/ssl/certs/ca-certificates.crt
+              mountPath: /kaniko/ssl/certs/
             {{- end }}
             {{- if .Values.runner.kaniko.mountedSecret }}
             - name: pull-secret
@@ -85,7 +80,7 @@ spec:
           volumeMounts:
             {{- if .Values.runner.customCerts.caCertificatesCrt }}
             - name: ca-certificates-crt
-              mountPath: /etc/ssl/certs/ca-certificates.crt
+              mountPath: /etc/ssl/certs/
             {{- end }}
             {{- if .Values.runner.kaniko.enabled }}
             - name: workspace-volume
