@@ -63,6 +63,22 @@ entries:
     version: 0.0.7
   excalidraw:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2022-08-29T15:18:47.328472792Z"
+    description: A Helm chart for Kubernetes
+    digest: bcf0e55bab765cd42ff3f9cbbfe5a87e304c12dee193cfef0cdc3eea3156201c
+    home: https://github.com/fullstack-devops/helm-charts/tree/main/charts/excalidraw
+    kubeVersion: '>=1.19.0'
+    name: excalidraw
+    sources:
+    - https://github.com/fullstack-devops/excalidraw
+    - https://github.com/fullstack-devops/excalidraw/pkgs/container/excalidraw
+    - https://quay.io/repository/fullstack-devops/excalidraw
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-0.1.1/excalidraw-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2022-07-11T13:25:23.98424299Z"
     description: A Helm chart for Kubernetes
@@ -73,6 +89,22 @@ entries:
     - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-0.1.0/excalidraw-0.1.0.tgz
     version: 0.1.0
   github-actions-runner:
+  - apiVersion: v2
+    appVersion: 0.7.0
+    created: "2022-08-29T15:18:47.478567714Z"
+    description: A Helm chart for Kubernetes
+    digest: de08266c31f4d9a354abbf32db6ebc250872defe2c24c03b921ac22952288ab7
+    home: https://github.com/fullstack-devops/helm-charts/tree/main/charts/github-actions-runner
+    kubeVersion: '>=1.19.0'
+    name: github-actions-runner
+    sources:
+    - https://github.com/fullstack-devops/github-actions-runner
+    - https://github.com/fullstack-devops/github-actions-runner/pkgs/container/github-actions-runner
+    - https://quay.io/repository/fullstack-devops/github-actions-runner
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.3.11/github-actions-runner-0.3.11.tgz
+    version: 0.3.11
   - apiVersion: v2
     appVersion: 0.7.0
     created: "2022-08-26T08:37:56.030096241Z"
@@ -353,4 +385,4 @@ entries:
     urls:
     - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.1.0/github-actions-runner-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-26T08:37:56.030472546Z"
+generated: "2022-08-29T15:18:47.478814218Z"
