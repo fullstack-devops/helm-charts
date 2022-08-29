@@ -56,6 +56,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install helm-docs @latest
+        env:
+          DOCS_VERSION: 1.11.0
+        run: |
+          wget https://github.com/norwoodj/helm-docs/releases/download/v${DOCS_VERSION}/helm-docs_${DOCS_VERSION}_Linux_x86_64.tar.gz -O helm-docs.tar.gz
+          tar -xzf helm-docs.tar.gz
       - name: Set appVersion and push
         shell: bash
         env:
@@ -85,6 +91,8 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
           
+          ./helm-docs -t templates/README.md.gotmpl
+
           git status
           git commit -a -m "update chart ${{ needs.check_vars.outputs.chart }} to appVersion ${{ needs.check_vars.outputs.appVersion }}"
           git push
