@@ -63,6 +63,22 @@ entries:
     version: 0.0.7
   excalidraw:
   - apiVersion: v2
+    appVersion: 0.0.5
+    created: "2022-10-10T10:00:26.120729853Z"
+    description: A Helm chart for Kubernetes
+    digest: 78e08a8e1043b90cfcc101d20ee55e19139fead3f2e70c7d48500a39d35d322e
+    home: https://github.com/fullstack-devops/helm-charts/tree/main/charts/excalidraw
+    kubeVersion: '>=1.19.0'
+    name: excalidraw
+    sources:
+    - https://github.com/fullstack-devops/excalidraw
+    - https://github.com/fullstack-devops/excalidraw/pkgs/container/excalidraw
+    - https://quay.io/repository/fullstack-devops/excalidraw
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/excalidraw-0.2.2/excalidraw-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2022-10-10T09:45:44.456179709Z"
     description: A Helm chart for Kubernetes
@@ -433,4 +449,4 @@ entries:
     urls:
     - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.1.0/github-actions-runner-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-10T09:45:44.456508314Z"
+generated: "2022-10-10T10:00:26.120958654Z"
