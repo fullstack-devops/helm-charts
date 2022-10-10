@@ -31,9 +31,9 @@ podSecurityContext:
   # fsGroup: 2000
 
 securityContext:
-  readOnlyRootFilesystem: false
+  readOnlyRootFilesystem: true
   runAsNonRoot: true
-  runAsUser: 101
+  runAsUser: 1001
   # capabilities:
   #   drop:
   #   - ALL
@@ -68,11 +68,11 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 300m
-    memory: 512Mi
-  requests:
-    cpu: 200m
+    cpu: 150m
     memory: 256Mi
+  requests:
+    cpu: 20m
+    memory: 128Mi
 
 autoscaling:
   enabled: false
