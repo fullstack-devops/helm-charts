@@ -26,7 +26,7 @@ jobs:
       - name: Run helm-docs
         run: .github/helm-docs.sh
 
-  kubeval-chart:
+  kubeconform-chart:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Run kubeval
+      - name: Run kubeconform
         env:
           KUBERNETES_VERSION: ${{ matrix.k8s }}
-        run: .github/kubeval.sh
+        run: .github/kubeconform.sh
