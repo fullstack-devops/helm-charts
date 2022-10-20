@@ -4,7 +4,7 @@ description: A Helm chart for Kubernetes
 
 type: application
 
-version: 0.2.2
+version: 0.2.3
 appVersion: 0.0.5
 
 kubeVersion: ">=1.19.0"
@@ -14,3 +14,8 @@ sources:
   - https://github.com/fullstack-devops/excalidraw
   - https://github.com/fullstack-devops/excalidraw/pkgs/container/excalidraw
   - https://quay.io/repository/fullstack-devops/excalidraw
+
+maintainers:
+  - name: eksrha
+    email: ekrsha@outlook.de
+    url: https://github.com/eksrha
