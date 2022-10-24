@@ -20,7 +20,7 @@ jobs:
       appVersion: ${{ steps.eval.outputs.appVersion }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: check workflow_dispatch or repository_dispatch
         id: eval
         shell: bash
@@ -55,7 +55,7 @@ jobs:
     needs: [check_vars]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install helm-docs @latest
         env:
           DOCS_VERSION: 1.11.0
