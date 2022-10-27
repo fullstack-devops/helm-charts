@@ -14,7 +14,7 @@ on:
 
 jobs:
   check_vars:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     outputs:
       chart: ${{ steps.eval.outputs.chart }}
       appVersion: ${{ steps.eval.outputs.appVersion }}
@@ -51,7 +51,7 @@ jobs:
           fi
 
   update_appVersion:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     needs: [check_vars]
     steps:
       - name: Checkout code
@@ -94,5 +94,5 @@ jobs:
           ./helm-docs -t templates/README.md.gotmpl
 
           git status
-          git commit -a -m "update chart ${{ needs.check_vars.outputs.chart }} to appVersion ${{ needs.check_vars.outputs.appVersion }}"
+          git commit charts/${{ needs.check_vars.outputs.chart }} -m "update chart ${{ needs.check_vars.outputs.chart }} to appVersion ${{ needs.check_vars.outputs.appVersion }}"
           git push
