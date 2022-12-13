@@ -33,7 +33,7 @@ podSecurityContext:
 securityContext:
   readOnlyRootFilesystem: false
   runAsNonRoot: true
-  runAsUser: 1001
+  runAsUser: 101
   # capabilities:
   #   drop:
   #   - ALL
