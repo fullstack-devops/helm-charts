@@ -31,7 +31,7 @@ podSecurityContext:
   # fsGroup: 2000
 
 securityContext:
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
   runAsUser: 1001
   # capabilities:
