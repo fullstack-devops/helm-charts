@@ -1,4 +1,4 @@
-# FullStack Devop's collection of helm charts
+# FullStack DevOps collection of helm charts
 
 ## Usage
 
