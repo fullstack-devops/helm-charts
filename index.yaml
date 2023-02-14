@@ -243,6 +243,25 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 0.10.0
+    created: "2023-02-14T12:39:55.022386741Z"
+    description: A Helm chart for Kubernetes
+    digest: 50ac0f90d973e39556856eae9c759a5cc54ea72a9b75c90954a4431709733156
+    home: https://github.com/fullstack-devops/helm-charts/tree/main/charts/github-actions-runner
+    kubeVersion: '>=1.19.0'
+    maintainers:
+    - email: ekrsha@outlook.de
+      name: eksrha
+      url: https://github.com/eksrha
+    name: github-actions-runner
+    sources:
+    - https://github.com/fullstack-devops/github-actions-runner
+    - https://quay.io/repository/fullstack-devops/github-actions-runner
+    type: application
+    urls:
+    - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.6.0/github-actions-runner-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
+    appVersion: 0.10.0
     created: "2023-02-14T10:46:46.618908357Z"
     description: A Helm chart for Kubernetes
     digest: d50d710b14e35f0cd342e6bb7c7b10cc11a3742830bc6adee1e35574bb032fbe
@@ -743,4 +762,4 @@ entries:
     urls:
     - https://github.com/fullstack-devops/helm-charts/releases/download/github-actions-runner-0.1.0/github-actions-runner-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-14T10:46:46.619235764Z"
+generated: "2023-02-14T12:39:55.022769339Z"
