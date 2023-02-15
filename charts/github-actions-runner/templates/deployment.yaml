@@ -80,7 +80,7 @@ spec:
           volumeMounts:
             {{- if .Values.runner.customCerts.configMapRef }}
             - name: ca-certificates-crt
-              mountPath: /etc/ssl/certs/custom/
+              mountPath: /etc/ssl/certs/
             {{- end }}
             {{- if .Values.runner.kaniko.enabled }}
             - name: workspace-volume
