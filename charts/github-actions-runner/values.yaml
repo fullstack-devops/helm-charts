@@ -39,7 +39,7 @@ runner:
   proxy:
     enabled: false
     pacUrl: ""
-    ntmlCreds: ""
+    ntlmCreds: ""
   # custom certs will be used in the runner and kaniko, as well in java (if you using it)
   customCerts:
     # Paste your custom ca-certificates.crt:

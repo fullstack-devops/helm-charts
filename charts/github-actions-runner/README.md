@@ -1,6 +1,6 @@
 # github-actions-runner
 
-![Version: 0.7.2](https://img.shields.io/badge/Version-0.7.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat-square)
+![Version: 0.7.3](https://img.shields.io/badge/Version-0.7.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -102,7 +102,7 @@ helm install github-actions-runner fs-devops/github-actions-runner -f values.yam
 | runner.kaniko.mountedSecret | string | `""` |  |
 | runner.labels | string | `""` |  |
 | runner.proxy.enabled | bool | `false` |  |
-| runner.proxy.ntmlCreds | string | `""` |  |
+| runner.proxy.ntlmCreds | string | `""` |  |
 | runner.proxy.pacUrl | string | `""` |  |
 | securityContext.readOnlyRootFilesystem | bool | `false` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
