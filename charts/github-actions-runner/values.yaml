@@ -18,6 +18,7 @@ runner:
     # -- if override: true -> the runner.flavor will be ignored and image.repository and image.tag will be leading
     override: false
   labels: ""
+  group: ""
   # -- inject the runner custom env variables
   env:
     []
@@ -35,6 +36,10 @@ runner:
     organisation: "fullstack-devpos"
     repository: ""
     accessToken: ""
+  proxy:
+    enabled: false
+    pacUrl: ""
+    ntmlCreds: ""
   # custom certs will be used in the runner and kaniko, as well in java (if you using it)
   customCerts:
     # Paste your custom ca-certificates.crt:

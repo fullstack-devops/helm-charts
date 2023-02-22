@@ -7,7 +7,7 @@ Helm's [documentation](https://helm.sh/docs) to get started.
 
 Once Helm has been set up correctly, add the repo as follows:
 
-    helm repo add fs-devops http://fullstack-devops.github.io/helm-charts/
+    helm repo add fs-devops https://fullstack-devops.github.io/helm-charts/
 
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages. You can then run `helm search repo fsops` to see the charts.
@@ -20,12 +20,22 @@ To uninstall the chart:
 
     helm delete my-<chart-name>
 
-### charts
+## Charts
 
 | Name                  | Description                     | Docs                                           |
 | --------------------- | ------------------------------- | ---------------------------------------------- |
 | excalidraw            | Chart for excalidraw            | [link](charts/excalidraw/README.md)            |
 | github-actions-runner | Chart for github-actions-runner | [link](charts/github-actions-runner/README.md) |
+
+
+## Dev
+
+### helm-docs
+
+```bash
+go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
+helm-docs -t templates/README.md.gotmpl
+```
 
 ### Pre-commit hook
 

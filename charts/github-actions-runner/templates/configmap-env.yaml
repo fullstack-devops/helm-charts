@@ -19,4 +19,7 @@ data:
   {{- if .Values.runner.labels }}
   GH_RUNNER_LABELS: {{ .Values.runner.labels | squote }}
   {{- end }}
+  {{- if .Values.runner.group }}
+  GH_RUNNER_GROUP: {{ .Values.runner.group | squote }}
+  {{- end }}
 
