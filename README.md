@@ -12,7 +12,7 @@ Once Helm has been set up correctly, add the repo as follows:
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages. You can then run `helm search repo fsops` to see the charts.
 
-To install the <chart-name> chart:
+To install a chart:
 
     helm install my-<chart-name> fs-devops/<chart-name>
 
@@ -22,11 +22,10 @@ To uninstall the chart:
 
 ## Charts
 
-| Name                  | Description                     | Docs                                           |
-| --------------------- | ------------------------------- | ---------------------------------------------- |
-| excalidraw            | Chart for excalidraw            | [link](charts/excalidraw/README.md)            |
-| github-actions-runner | Chart for github-actions-runner | [link](charts/github-actions-runner/README.md) |
-
+| Name                  | Description                     | Docs                                  |
+| --------------------- | ------------------------------- | ------------------------------------- |
+| excalidraw            | Chart for excalidraw            | [link](charts/excalidraw/)            |
+| github-actions-runner | Chart for github-actions-runner | [link](charts/github-actions-runner/) |
 
 ## Dev
 
