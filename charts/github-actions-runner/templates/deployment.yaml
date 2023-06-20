@@ -11,6 +11,8 @@ spec:
   selector:
     matchLabels:
       {{- include "github-actions-runner.selectorLabels" . | nindent 6 }}
+  strategy:
+    type: Recreate
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -57,7 +59,11 @@ spec:
             readOnlyRootFilesystem: false
           image: {{ include "github-actions-runner.runner-image-kaniko" . }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- if .Values.runner.kaniko.resources }}
+              {{- toYaml .Values.runner.kaniko.resources | nindent 12 }}
+            {{- else }}
+              {{- toYaml .Values.resources | nindent 12 }}
+            {{- end }}
           volumeMounts:
             - name: workspace-volume
               mountPath: /kaniko/workspace/
